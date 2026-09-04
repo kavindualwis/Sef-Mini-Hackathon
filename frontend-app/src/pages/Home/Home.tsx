@@ -155,7 +155,12 @@ export const Home = () => {
           <div className="services-layout-split">
             {/* Sidebar sub-filters */}
             <aside className="sidebar-filter-menu">
-              <button className="sidebar-tab active"><HiOutlineSparkles /> Keep exploring</button>
+              <button
+                className={`sidebar-tab ${activeCategory === 'Trending 🔥' || activeCategory === 'All' ? 'active' : ''}`}
+                onClick={() => setActiveCategory('Trending 🔥')}
+              >
+                <HiOutlineSparkles /> Keep exploring
+              </button>
               {CATEGORIES.slice(1, 6).map((cat) => (
                 <button
                   key={cat}
