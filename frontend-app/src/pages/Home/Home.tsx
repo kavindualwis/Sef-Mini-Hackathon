@@ -5,13 +5,11 @@ import {
   HiOutlineBell,
   HiOutlineMail,
   HiOutlineHeart,
-  HiOutlinePlusCircle,
   HiOutlineLocationMarker,
   HiOutlineStar,
   HiOutlineSparkles,
 } from 'react-icons/hi';
 import { serviceAPI } from '../../services/api';
-import { AddServiceModal } from '../../components/AddServiceModal';
 import { Footer } from '../../components/Footer';
 import './Home.css';
 
@@ -39,7 +37,6 @@ export const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [services, setServices] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('fixmate_user');
@@ -146,9 +143,6 @@ export const Home = () => {
         <section className="service-listings-section">
           <div className="section-header-row">
             <h2>Based on what you might be looking for</h2>
-            <button className="btn-add-service-shortcut" onClick={() => setShowAddModal(true)}>
-              <HiOutlinePlusCircle /> Create Service Gig
-            </button>
           </div>
 
           <div className="services-layout-split">
@@ -172,11 +166,8 @@ export const Home = () => {
                 <div className="loading-gigs">Loading available services...</div>
               ) : services.length === 0 ? (
                 <div className="empty-gigs-box">
-                  <h3>No services added in "{activeCategory}" yet</h3>
-                  <p>Be the first to offer a service in this category!</p>
-                  <button className="btn-create-first" onClick={() => setShowAddModal(true)}>
-                    + Post Service Gig
-                  </button>
+                  <h3>No services found in "{activeCategory}" yet</h3>
+                  <p>Try exploring another category or check back later.</p>
                 </div>
               ) : (
                 services.map((gig) => (
@@ -229,18 +220,6 @@ export const Home = () => {
 
       {/* Footer */}
       <Footer />
-
-      {/* Add Service Modal Component */}
-      {showAddModal && (
-        <AddServiceModal
-          user={user}
-          onClose={() => setShowAddModal(false)}
-          onSuccess={() => {
-            setShowAddModal(false);
-            fetchServices();
-          }}
-        />
-      )}
     </div>
   );
 };
