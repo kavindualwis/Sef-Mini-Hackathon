@@ -106,8 +106,8 @@ const Verify = () => {
               </div>
               <h2>You're All Set!</h2>
               <p>Your account has been verified successfully. Welcome to FixMate, {userName}!</p>
-              <button className="btn-continue" onClick={() => navigate('/')}>
-                Explore FixMate →
+              <button className="btn-continue" onClick={() => navigate('/home')}>
+                Explore FixMate Dashboard →
               </button>
             </div>
           </div>

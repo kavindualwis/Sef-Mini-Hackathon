@@ -22,4 +22,36 @@ export const authAPI = {
     api.post('/auth/login', data),
 };
 
+// Service API calls
+export const serviceAPI = {
+  create: (data: {
+    userId?: string;
+    providerName: string;
+    providerEmail: string;
+    title: string;
+    category: string;
+    experience: string;
+    price: string;
+    description: string;
+    location: { address: string; lat: number; lng: number; city: string };
+  }) => api.post('/services', data),
+
+  getAll: (params?: { category?: string; search?: string }) =>
+    api.get('/services', { params }),
+
+  getMyServices: (email: string) =>
+    api.get('/services/my-services', { params: { email } }),
+
+  update: (id: string, data: {
+    title: string;
+    category: string;
+    experience: string;
+    price: string;
+    description: string;
+    location: { address: string; lat: number; lng: number; city: string };
+  }) => api.put(`/services/${id}`, data),
+
+  delete: (id: string) => api.delete(`/services/${id}`),
+};
+
 export default api;

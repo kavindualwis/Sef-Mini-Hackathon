@@ -220,6 +220,7 @@ const Landing = ({ authModal, setAuthModal }: LandingProps) => {
           onLoginSuccess={(userData) => {
             setUser(userData);
             setAuthModal(null);
+            navigate('/home');
           }}
         />
       )}
