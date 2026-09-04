@@ -5,7 +5,7 @@ import {
   HiOutlineLocationMarker,
   HiOutlineStar,
   HiOutlineBriefcase,
-  HiOutlineCurrencyDollar,
+  HiOutlineCurrencyRupee,
   HiOutlineCheck,
   HiOutlineMail,
   HiOutlineShieldCheck,
@@ -158,7 +158,7 @@ export const ServiceDetail = () => {
               </div>
 
               <div className="highlight-item">
-                <HiOutlineCurrencyDollar />
+                <HiOutlineCurrencyRupee />
                 <div>
                   <strong>Service Rate</strong>
                   <p>{service.price}</p>

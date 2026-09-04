@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { HiX, HiOutlineLocationMarker, HiOutlineBriefcase, HiOutlineCurrencyDollar, HiOutlineFolder, HiOutlineDocumentText } from 'react-icons/hi';
+import { HiX, HiOutlineLocationMarker, HiOutlineBriefcase, HiOutlineCurrencyRupee, HiOutlineFolder, HiOutlineDocumentText } from 'react-icons/hi';
 import { serviceAPI } from '../services/api';
 import './AddServiceModal.css';
 
@@ -239,10 +239,10 @@ export const AddServiceModal = ({ user, initialData, onClose, onSuccess }: AddSe
 
           {/* Pricing */}
           <div className="form-field">
-            <label><HiOutlineCurrencyDollar /> Starting Price or Hourly Rate *</label>
+            <label><HiOutlineCurrencyRupee /> Starting Price or Hourly Rate *</label>
             <input
               type="text"
-              placeholder="e.g. $50 / hr or Starting at $100"
+              placeholder="e.g. Rs. 50 / hr or Starting at Rs. 100"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />

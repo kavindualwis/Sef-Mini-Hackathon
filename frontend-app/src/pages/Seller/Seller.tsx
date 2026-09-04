@@ -7,7 +7,7 @@ import {
   HiOutlineLocationMarker,
   HiOutlineArrowLeft,
   HiOutlineBriefcase,
-  HiOutlineCurrencyDollar,
+  HiOutlineCurrencyRupee,
 } from 'react-icons/hi';
 import { serviceAPI } from '../../services/api';
 import { AddServiceModal } from '../../components/AddServiceModal';
@@ -145,7 +145,7 @@ export const Seller = () => {
 
                   <div className="seller-gig-meta">
                     <span><HiOutlineBriefcase /> {service.experience}</span>
-                    <span><HiOutlineCurrencyDollar /> {service.price}</span>
+                    <span><HiOutlineCurrencyRupee /> {service.price}</span>
                   </div>
 
                   <div className="seller-gig-location">
