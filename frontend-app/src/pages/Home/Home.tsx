@@ -144,42 +144,6 @@ export const Home = () => {
       <main className="fiverr-content-body">
         <div className="welcome-banner">
           <h1>Welcome back, <span>{user?.name || 'Kavindu Alwis'}</span></h1>
-
-          <div className="progress-cards-grid">
-            {/* Card 1 */}
-            <div className="fiverr-card">
-              <div className="card-badge">RECOMMENDED FOR YOU</div>
-              <div className="card-body-content">
-                <div className="card-icon-box">
-                  <HiOutlineDocumentText />
-                </div>
-                <div className="card-text-details">
-                  <h3>Post a project brief</h3>
-                  <p>Get tailored offers from verified service providers for your needs.</p>
-                </div>
-                <button className="card-action-btn" onClick={() => setShowAddModal(true)}>
-                  Get started
-                </button>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="fiverr-card">
-              <div className="card-badge">PROFILE PROGRESS</div>
-              <div className="card-body-content">
-                <div className="card-icon-box">
-                  <HiOutlineBriefcase />
-                </div>
-                <div className="card-text-details">
-                  <h3>Offer a New Service</h3>
-                  <p>Publish your service gig to start receiving customer orders.</p>
-                </div>
-                <button className="card-action-btn primary" onClick={() => setShowAddModal(true)}>
-                  + Add Service
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* 4. Service Listings Section */}
