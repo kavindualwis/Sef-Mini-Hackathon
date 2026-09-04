@@ -53,7 +53,7 @@ export const Seller = () => {
       await serviceAPI.delete(id);
       if (user?.email) fetchMyServices(user.email);
     } catch (err) {
-      console.error('Failed to delete service:', err);
+      console.error('Failed to delete the service:', err);
       alert('Failed to delete service gig');
     }
   };
