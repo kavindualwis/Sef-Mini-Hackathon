@@ -13,6 +13,7 @@ import {
 } from 'react-icons/hi';
 import { serviceAPI } from '../../services/api';
 import { AddServiceModal } from '../../components/AddServiceModal';
+import { Footer } from '../../components/Footer';
 import './Seller.css';
 
 export const Seller = () => {
@@ -176,6 +177,9 @@ export const Seller = () => {
           </div>
         )}
       </main>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Add / Edit Service Modal */}
       {showModal && (
