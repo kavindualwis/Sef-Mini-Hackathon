@@ -110,17 +110,10 @@ export const Home = () => {
 
           {/* Mode Switch Button (Switch to Selling / Offering Services) */}
           <button
-            className={`switch-mode-btn ${mode === 'selling' ? 'active-selling' : ''}`}
-            onClick={() => {
-              if (mode === 'buying') {
-                setMode('selling');
-                setShowAddModal(true);
-              } else {
-                setMode('buying');
-              }
-            }}
+            className="switch-mode-btn"
+            onClick={() => navigate('/seller')}
           >
-            {mode === 'buying' ? 'Switch to Selling' : 'Switch to Buying'}
+            Switch to Selling
           </button>
 
           <div className="user-profile-menu">

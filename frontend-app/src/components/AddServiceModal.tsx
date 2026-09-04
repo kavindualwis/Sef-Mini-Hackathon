@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { HiX, HiOutlineLocationMarker, HiOutlineBriefcase, HiOutlineCurrencyDollar, HiOutlineFolder, HiOutlineDocumentText } from 'react-icons/hi';
+import { HiX, HiOutlineLocationMarker, HiOutlineBriefcase, HiOutlineCurrencyDollar, HiOutlineFolder, HiOutlineDocumentText, HiOutlineSearch } from 'react-icons/hi';
 import { serviceAPI } from '../services/api';
 import './AddServiceModal.css';
 
 interface AddServiceModalProps {
   user: any;
+  initialData?: any;
   onClose: () => void;
   onSuccess: () => void;
 }
@@ -31,17 +32,19 @@ declare global {
   }
 }
 
-export const AddServiceModal = ({ user, onClose, onSuccess }: AddServiceModalProps) => {
-  const [title, setTitle] = useState('');
-  const [category, setCategory] = useState(CATEGORIES[0]);
-  const [experience, setExperience] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
+export const AddServiceModal = ({ user, initialData, onClose, onSuccess }: AddServiceModalProps) => {
+  const isEditing = Boolean(initialData);
+
+  const [title, setTitle] = useState(initialData?.title || '');
+  const [category, setCategory] = useState(initialData?.category || CATEGORIES[0]);
+  const [experience, setExperience] = useState(initialData?.experience || '');
+  const [price, setPrice] = useState(initialData?.price || '');
+  const [description, setDescription] = useState(initialData?.description || '');
   
   // Location state
-  const [address, setAddress] = useState('Colombo, Sri Lanka');
-  const [lat, setLat] = useState(6.9271);
-  const [lng, setLng] = useState(79.8612);
+  const [address, setAddress] = useState(initialData?.location?.address || 'Colombo, Sri Lanka');
+  const [lat, setLat] = useState(initialData?.location?.lat || 6.9271);
+  const [lng, setLng] = useState(initialData?.location?.lng || 79.8612);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -51,15 +54,35 @@ export const AddServiceModal = ({ user, onClose, onSuccess }: AddServiceModalPro
   const markerRef = useRef<any>(null);
   const autocompleteInputRef = useRef<HTMLInputElement | null>(null);
 
+  // Perform geocode search for typed address
+  const handleLocationGeocode = (searchQuery: string) => {
+    if (!window.google || !mapInstanceRef.current || !markerRef.current || !searchQuery.trim()) return;
+
+    const geocoder = new window.google.maps.Geocoder();
+    geocoder.geocode({ address: searchQuery }, (results: any, status: any) => {
+      if (status === 'OK' && results && results[0]) {
+        const placeLat = results[0].geometry.location.lat();
+        const placeLng = results[0].geometry.location.lng();
+        setLat(placeLat);
+        setLng(placeLng);
+        setAddress(results[0].formatted_address || searchQuery);
+
+        mapInstanceRef.current.setCenter({ lat: placeLat, lng: placeLng });
+        mapInstanceRef.current.setZoom(14);
+        markerRef.current.setPosition({ lat: placeLat, lng: placeLng });
+      }
+    });
+  };
+
   // Initialize Google Maps
   useEffect(() => {
     if (!window.google || !mapRef.current) return;
 
     try {
-      const defaultCenter = { lat: 6.9271, lng: 79.8612 };
+      const initialCenter = { lat: lat || 6.9271, lng: lng || 79.8612 };
       const map = new window.google.maps.Map(mapRef.current, {
-        center: defaultCenter,
-        zoom: 12,
+        center: initialCenter,
+        zoom: 13,
         styles: [
           { featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] }
         ]
@@ -67,7 +90,7 @@ export const AddServiceModal = ({ user, onClose, onSuccess }: AddServiceModalPro
       mapInstanceRef.current = map;
 
       const marker = new window.google.maps.Marker({
-        position: defaultCenter,
+        position: initialCenter,
         map: map,
         draggable: true,
         title: 'Drag to set service location',
@@ -125,7 +148,7 @@ export const AddServiceModal = ({ user, onClose, onSuccess }: AddServiceModalPro
 
     setLoading(true);
     try {
-      await serviceAPI.create({
+      const payload = {
         userId: user?.id || user?._id,
         providerName: user?.name || 'Verified Provider',
         providerEmail: user?.email || 'provider@fixmate.lk',
@@ -140,12 +163,18 @@ export const AddServiceModal = ({ user, onClose, onSuccess }: AddServiceModalPro
           lng,
           city: address.split(',').slice(-2, -1)[0]?.trim() || 'Colombo',
         },
-      });
+      };
+
+      if (isEditing) {
+        await serviceAPI.update(initialData._id, payload);
+      } else {
+        await serviceAPI.create(payload);
+      }
 
       onSuccess();
     } catch (err: any) {
-      console.error('Failed to create service:', err);
-      setError(err.response?.data?.message || 'Failed to submit service. Please try again.');
+      console.error('Failed to save service:', err);
+      setError(err.response?.data?.message || 'Failed to save service details. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -157,8 +186,8 @@ export const AddServiceModal = ({ user, onClose, onSuccess }: AddServiceModalPro
         <button className="modal-close-btn" onClick={onClose}><HiX /></button>
 
         <div className="modal-top-header">
-          <h2>Create New Service Gig</h2>
-          <p>Provide details about your expertise to start receiving clients on FixMate</p>
+          <h2>{isEditing ? 'Edit Service Gig' : 'Create New Service Gig'}</h2>
+          <p>{isEditing ? 'Update your service details and location' : 'Provide details about your expertise to start receiving clients on FixMate'}</p>
         </div>
 
         {error && <div className="modal-error-banner">{error}</div>}
@@ -223,16 +252,31 @@ export const AddServiceModal = ({ user, onClose, onSuccess }: AddServiceModalPro
           {/* Location setup with Google Maps */}
           <div className="form-field location-section">
             <label><HiOutlineLocationMarker /> Service Location & Google Map Setup *</label>
-            <p className="field-hint">Search address or drag the pin on the map to mark your coverage location</p>
+            <p className="field-hint">Type address below and press Search or drag the pin on the map</p>
             
-            <input
-              ref={autocompleteInputRef}
-              type="text"
-              className="location-search-input"
-              placeholder="Search city or address in Sri Lanka..."
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-            />
+            <div className="location-search-wrapper">
+              <input
+                ref={autocompleteInputRef}
+                type="text"
+                className="location-search-input"
+                placeholder="Type city or address in Sri Lanka (e.g. Kandy, Galle)..."
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleLocationGeocode(address);
+                  }
+                }}
+              />
+              <button
+                type="button"
+                className="btn-search-map"
+                onClick={() => handleLocationGeocode(address)}
+              >
+                <HiOutlineSearch /> Search Map
+              </button>
+            </div>
 
             <div className="google-map-container" ref={mapRef}></div>
             <div className="location-coords">
@@ -244,7 +288,7 @@ export const AddServiceModal = ({ user, onClose, onSuccess }: AddServiceModalPro
           <div className="modal-actions">
             <button type="button" className="btn-cancel" onClick={onClose}>Cancel</button>
             <button type="submit" className="btn-publish" disabled={loading}>
-              {loading ? 'Publishing Service...' : 'Publish Service Gig'}
+              {loading ? (isEditing ? 'Saving Changes...' : 'Publishing Service...') : (isEditing ? 'Save Changes' : 'Publish Service Gig')}
             </button>
           </div>
         </form>

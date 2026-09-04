@@ -132,8 +132,34 @@
   box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
 }
 
-.location-search-input {
+.location-search-wrapper {
+  display: flex;
+  gap: 8px;
   margin-bottom: 8px;
+}
+
+.location-search-input {
+  flex: 1;
+}
+
+.btn-search-map {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #222325;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.btn-search-map:hover {
+  background: #000000;
 }
 
 .google-map-container {

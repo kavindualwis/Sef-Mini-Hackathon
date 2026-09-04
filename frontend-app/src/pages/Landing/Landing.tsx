@@ -50,8 +50,11 @@ const Landing = ({ authModal, setAuthModal }: LandingProps) => {
   // Check login state
   useEffect(() => {
     const stored = localStorage.getItem('fixmate_user');
-    if (stored) setUser(JSON.parse(stored));
-  }, [authModal]);
+    if (stored) {
+      setUser(JSON.parse(stored));
+      navigate('/home');
+    }
+  }, [authModal, navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem('fixmate_token');
