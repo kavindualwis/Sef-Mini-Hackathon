@@ -1,15 +1,15 @@
 .seller-dashboard-page {
   min-height: 100vh;
-  background-color: #f9fafb;
-  color: #111827;
-  font-family: Macan, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fafaf9;
+  color: #1c1917;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* 1. Navbar */
 .seller-navbar {
   height: 68px;
   background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e7e5e4;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,18 +24,18 @@
   font-weight: 900;
   letter-spacing: -0.5px;
   cursor: pointer;
-  color: #111827;
+  color: #1c1917;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .seller-logo span {
-  color: #10b981;
+  color: #f97316;
 }
 
 .seller-tag {
-  background: #10b981;
+  background: #f97316;
   color: #ffffff;
   font-size: 10px;
   font-weight: 800;
@@ -51,9 +51,9 @@
 }
 
 .switch-to-buying-btn {
-  background: #f3f4f6;
-  border: 1px solid #d1d5db;
-  color: #374151;
+  background: #f5f5f4;
+  border: 1px solid #d6d3d1;
+  color: #44403c;
   font-size: 13px;
   font-weight: 700;
   padding: 8px 16px;
@@ -66,13 +66,36 @@
 }
 
 .switch-to-buying-btn:hover {
-  background: #e5e7eb;
-  color: #111827;
+  background: #e7e5e4;
+  color: #1c1917;
+}
+
+.user-avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.btn-small-logout {
+  background: #f5f5f4;
+  border: none;
+  color: #78716c;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* 2. Hero Banner */
 .seller-hero-banner {
-  background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
   color: #ffffff;
   padding: 40px 32px;
 }
@@ -92,19 +115,19 @@
 }
 
 .hero-text h1 span {
-  color: #34d399;
+  color: #fed7aa;
 }
 
 .hero-text p {
   font-size: 14px;
-  color: #a7f3d0;
+  color: #ffedd5;
   margin: 0;
   max-width: 600px;
 }
 
 .btn-create-gig-hero {
   background: #ffffff;
-  color: #047857;
+  color: #ea580c;
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
@@ -119,7 +142,7 @@
 }
 
 .btn-create-gig-hero:hover {
-  background: #ecfdf5;
+  background: #fff7ed;
   transform: translateY(-2px);
 }
 
@@ -133,13 +156,13 @@
 .seller-section-title h2 {
   font-size: 22px;
   font-weight: 800;
-  color: #111827;
+  color: #1c1917;
   margin: 0 0 4px;
 }
 
 .seller-section-title p {
   font-size: 14px;
-  color: #6b7280;
+  color: #78716c;
   margin: 0 0 24px;
 }
 
@@ -147,37 +170,37 @@
   text-align: center;
   padding: 60px;
   font-size: 16px;
-  color: #6b7280;
+  color: #78716c;
 }
 
 .seller-empty-state {
   text-align: center;
   padding: 60px 20px;
   background: #ffffff;
-  border: 2px dashed #d1d5db;
+  border: 2px dashed #e7e5e4;
   border-radius: 12px;
 }
 
 .empty-icon {
   font-size: 48px;
-  color: #9ca3af;
+  color: #a8a29e;
   margin-bottom: 12px;
 }
 
 .seller-empty-state h3 {
   font-size: 20px;
-  color: #111827;
+  color: #1c1917;
   margin: 0 0 6px;
 }
 
 .seller-empty-state p {
   font-size: 14px;
-  color: #6b7280;
+  color: #78716c;
   margin: 0 0 20px;
 }
 
 .btn-add-first-service {
-  background: #10b981;
+  background: linear-gradient(135deg, #f97316, #ea580c);
   color: #ffffff;
   border: none;
   padding: 12px 24px;
@@ -195,7 +218,7 @@
 
 .seller-gig-card {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e7e5e4;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -206,7 +229,7 @@
 .seller-card-image {
   position: relative;
   height: 180px;
-  background: #f3f4f6;
+  background: #f5f5f4;
 }
 
 .seller-card-image img {
@@ -219,7 +242,7 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(17, 24, 39, 0.85);
+  background: rgba(28, 25, 23, 0.85);
   color: #ffffff;
   font-size: 11px;
   font-weight: 700;
@@ -238,14 +261,14 @@
 .seller-gig-title {
   font-size: 16px;
   font-weight: 700;
-  color: #111827;
+  color: #1c1917;
   margin: 0 0 8px;
   line-height: 1.4;
 }
 
 .seller-gig-desc {
   font-size: 13px;
-  color: #6b7280;
+  color: #78716c;
   line-height: 1.5;
   margin: 0 0 16px;
   display: -webkit-box;
@@ -259,7 +282,7 @@
   gap: 16px;
   font-size: 13px;
   font-weight: 600;
-  color: #374151;
+  color: #44403c;
   margin-bottom: 12px;
 }
 
@@ -270,12 +293,12 @@
 }
 
 .seller-gig-meta svg {
-  color: #10b981;
+  color: #f97316;
 }
 
 .seller-gig-location {
   font-size: 12px;
-  color: #059669;
+  color: #ea580c;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -288,14 +311,14 @@
   gap: 12px;
   margin-top: auto;
   padding-top: 14px;
-  border-top: 1px solid #f3f4f6;
+  border-top: 1px solid #f5f5f4;
 }
 
 .btn-edit-gig {
   flex: 1;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #166534;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #c2410c;
   font-size: 13px;
   font-weight: 700;
   padding: 8px;
@@ -309,7 +332,7 @@
 }
 
 .btn-edit-gig:hover {
-  background: #dcfce7;
+  background: #ffedd5;
 }
 
 .btn-delete-gig {

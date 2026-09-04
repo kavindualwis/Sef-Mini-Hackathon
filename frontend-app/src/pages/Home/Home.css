@@ -1,15 +1,15 @@
-/* Fiverr Layout Styles */
+/* Fiverr-style Layout with FixMate Warm Orange Brand Palette */
 .fiverr-home-layout {
   min-height: 100vh;
   background-color: #ffffff;
-  color: #222325;
-  font-family: Macan, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #1c1917;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* 1. Navbar */
 .fiverr-navbar {
   height: 68px;
-  border-bottom: 1px solid #e4e5e7;
+  border-bottom: 1px solid #e7e5e4;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,22 +32,22 @@
   font-weight: 900;
   letter-spacing: -0.8px;
   cursor: pointer;
-  color: #222325;
+  color: #1c1917;
 }
 
 .fiverr-logo span {
-  color: #10b981;
+  color: #f97316;
 }
 
 .fiverr-logo .logo-dot {
-  color: #10b981;
+  color: #f97316;
 }
 
 .fiverr-search-bar {
   display: flex;
   align-items: center;
-  border: 1px solid #c5c7cb;
-  border-radius: 4px;
+  border: 1px solid #d6d3d1;
+  border-radius: 6px;
   overflow: hidden;
   width: 100%;
   max-width: 460px;
@@ -55,7 +55,7 @@
 }
 
 .fiverr-search-bar:focus-within {
-  border-color: #222325;
+  border-color: #f97316;
 }
 
 .fiverr-search-bar input {
@@ -64,11 +64,11 @@
   padding: 10px 14px;
   font-size: 14px;
   width: 100%;
-  color: #222325;
+  color: #1c1917;
 }
 
 .search-btn {
-  background: #222325;
+  background: #1c1917;
   color: #ffffff;
   border: none;
   padding: 10px 16px;
@@ -77,10 +77,11 @@
   align-items: center;
   justify-content: center;
   font-size: 18px;
+  transition: background 0.2s;
 }
 
 .search-btn:hover {
-  background: #000000;
+  background: #f97316;
 }
 
 .nav-right {
@@ -93,7 +94,7 @@
   background: transparent;
   border: none;
   font-size: 20px;
-  color: #74767e;
+  color: #78716c;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -103,39 +104,34 @@
 }
 
 .icon-nav-btn:hover {
-  color: #222325;
+  color: #f97316;
 }
 
 .nav-text-link {
   font-size: 14px;
   font-weight: 600;
-  color: #74767e;
+  color: #78716c;
   cursor: pointer;
 }
 
 .nav-text-link:hover {
-  color: #10b981;
+  color: #f97316;
 }
 
 .switch-mode-btn {
   background: transparent;
-  border: 1px solid #10b981;
-  color: #10b981;
+  border: 1px solid #f97316;
+  color: #f97316;
   font-size: 13px;
   font-weight: 700;
   padding: 7px 16px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .switch-mode-btn:hover {
-  background: #10b981;
-  color: #ffffff;
-}
-
-.switch-mode-btn.active-selling {
-  background: #10b981;
+  background: #f97316;
   color: #ffffff;
 }
 
@@ -149,7 +145,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #10b981;
+  background: linear-gradient(135deg, #f97316, #ea580c);
   color: #ffffff;
   font-weight: 700;
   display: flex;
@@ -159,9 +155,9 @@
 }
 
 .btn-small-logout {
-  background: #f3f4f6;
+  background: #f5f5f4;
   border: none;
-  color: #4b5563;
+  color: #78716c;
   font-size: 12px;
   padding: 4px 10px;
   border-radius: 4px;
@@ -170,7 +166,7 @@
 
 /* 2. Category Sub-Bar */
 .fiverr-category-bar {
-  border-bottom: 1px solid #e4e5e7;
+  border-bottom: 1px solid #e7e5e4;
   padding: 0 32px;
   background: #ffffff;
 }
@@ -187,7 +183,7 @@
   background: transparent;
   border: none;
   font-size: 14px;
-  color: #62646a;
+  color: #78716c;
   white-space: nowrap;
   cursor: pointer;
   font-weight: 500;
@@ -197,13 +193,13 @@
 }
 
 .cat-chip:hover {
-  color: #222325;
+  color: #1c1917;
 }
 
 .cat-chip.active {
-  color: #10b981;
+  color: #f97316;
   font-weight: 700;
-  border-bottom-color: #10b981;
+  border-bottom-color: #f97316;
 }
 
 /* 3. Main Content Body */
@@ -215,20 +211,20 @@
 
 /* Welcome Banner */
 .welcome-banner {
-  background: linear-gradient(180deg, #f7fbf9 0%, #ffffff 100%);
+  background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
   padding: 24px 0 36px;
   border-radius: 12px;
 }
 
 .welcome-banner h1 {
   font-size: 32px;
-  font-weight: 700;
-  color: #222325;
+  font-weight: 800;
+  color: #1c1917;
   margin: 0 0 24px;
 }
 
 .welcome-banner h1 span {
-  color: #10b981;
+  color: #f97316;
 }
 
 .progress-cards-grid {
@@ -238,8 +234,8 @@
 }
 
 .fiverr-card {
-  border: 1px solid #e4e5e7;
-  border-radius: 8px;
+  border: 1px solid #e7e5e4;
+  border-radius: 10px;
   padding: 20px;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
@@ -248,7 +244,7 @@
 .card-badge {
   font-size: 11px;
   font-weight: 700;
-  color: #74767e;
+  color: #a8a29e;
   letter-spacing: 0.5px;
   margin-bottom: 12px;
 }
@@ -263,12 +259,12 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #f4f4f5;
+  background: #ffedd5;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  color: #222325;
+  color: #f97316;
 }
 
 .card-text-details {
@@ -279,39 +275,39 @@
   font-size: 15px;
   font-weight: 700;
   margin: 0 0 4px;
-  color: #222325;
+  color: #1c1917;
 }
 
 .card-text-details p {
   font-size: 13px;
-  color: #62646a;
+  color: #78716c;
   margin: 0;
 }
 
 .card-action-btn {
-  border: 1px solid #222325;
+  border: 1px solid #1c1917;
   background: #ffffff;
-  color: #222325;
+  color: #1c1917;
   font-size: 13px;
   font-weight: 700;
   padding: 8px 18px;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   white-space: nowrap;
 }
 
 .card-action-btn.primary {
-  background: #10b981;
+  background: linear-gradient(135deg, #f97316, #ea580c);
   color: #ffffff;
-  border-color: #10b981;
+  border-color: #f97316;
 }
 
 .card-action-btn:hover {
-  background: #f4f4f5;
+  background: #f5f5f4;
 }
 
 .card-action-btn.primary:hover {
-  background: #059669;
+  background: #ea580c;
 }
 
 /* 4. Service Listings Section */
@@ -328,13 +324,13 @@
 
 .section-header-row h2 {
   font-size: 22px;
-  font-weight: 700;
-  color: #222325;
+  font-weight: 800;
+  color: #1c1917;
   margin: 0;
 }
 
 .btn-add-service-shortcut {
-  background: #10b981;
+  background: linear-gradient(135deg, #f97316, #ea580c);
   color: #ffffff;
   border: none;
   padding: 10px 18px;
@@ -345,11 +341,11 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 3px 10px rgba(249, 115, 22, 0.25);
 }
 
 .btn-add-service-shortcut:hover {
-  background: #059669;
+  background: #ea580c;
 }
 
 .services-layout-split {
@@ -366,12 +362,12 @@
 
 .sidebar-tab {
   background: transparent;
-  border: 1px solid #e4e5e7;
+  border: 1px solid #e7e5e4;
   padding: 12px 16px;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 600;
-  color: #404145;
+  color: #78716c;
   text-align: left;
   cursor: pointer;
   display: flex;
@@ -382,9 +378,9 @@
 
 .sidebar-tab.active,
 .sidebar-tab:hover {
-  background: #f4f4f5;
-  border-color: #222325;
-  color: #222325;
+  background: #fff7ed;
+  border-color: #f97316;
+  color: #f97316;
 }
 
 .gigs-grid {
@@ -394,8 +390,8 @@
 }
 
 .gig-card {
-  border: 1px solid #e4e5e7;
-  border-radius: 8px;
+  border: 1px solid #e7e5e4;
+  border-radius: 10px;
   overflow: hidden;
   background: #ffffff;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -411,7 +407,7 @@
 .gig-image-wrap {
   position: relative;
   height: 150px;
-  background: #f4f4f5;
+  background: #f5f5f4;
   overflow: hidden;
 }
 
@@ -435,7 +431,7 @@
   justify-content: center;
   cursor: pointer;
   font-size: 16px;
-  color: #74767e;
+  color: #78716c;
 }
 
 .gig-card-info {
@@ -456,7 +452,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #10b981;
+  background: linear-gradient(135deg, #f97316, #ea580c);
   color: #ffffff;
   font-size: 12px;
   font-weight: 700;
@@ -473,19 +469,19 @@
 .provider-name {
   font-size: 13px;
   font-weight: 700;
-  color: #222325;
+  color: #1c1917;
 }
 
 .provider-badge {
   font-size: 10px;
-  color: #74767e;
+  color: #a8a29e;
   font-weight: 500;
 }
 
 .gig-title {
   font-size: 14px;
   font-weight: 500;
-  color: #404145;
+  color: #44403c;
   line-height: 1.4;
   margin: 0 0 8px;
   display: -webkit-box;
@@ -497,7 +493,7 @@
 
 .gig-location-tag {
   font-size: 11px;
-  color: #10b981;
+  color: #ea580c;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -514,30 +510,30 @@
 }
 
 .star-icon {
-  color: #ffb300;
+  color: #f59e0b;
   display: flex;
 }
 
 .rating-score {
   font-weight: 700;
-  color: #222325;
+  color: #1c1917;
 }
 
 .review-count {
-  color: #b5b6ba;
+  color: #a8a29e;
 }
 
 .experience-tag {
   margin-left: auto;
-  background: #f4f4f5;
+  background: #f5f5f4;
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 10px;
-  color: #62646a;
+  color: #78716c;
 }
 
 .gig-card-footer {
-  border-top: 1px solid #efeff0;
+  border-top: 1px solid #f5f5f4;
   padding-top: 10px;
   margin-top: auto;
   display: flex;
@@ -548,39 +544,39 @@
 .price-label {
   font-size: 10px;
   font-weight: 700;
-  color: #74767e;
+  color: #a8a29e;
   letter-spacing: 0.5px;
 }
 
 .price-value {
   font-size: 15px;
   font-weight: 800;
-  color: #222325;
+  color: #1c1917;
 }
 
 .empty-gigs-box {
   grid-column: 1 / -1;
   text-align: center;
   padding: 60px 20px;
-  background: #f9fafb;
-  border: 2px dashed #e5e7eb;
+  background: #fafaf9;
+  border: 2px dashed #e7e5e4;
   border-radius: 12px;
 }
 
 .empty-gigs-box h3 {
   font-size: 18px;
-  color: #222325;
+  color: #1c1917;
   margin: 0 0 6px;
 }
 
 .empty-gigs-box p {
-  color: #6b7280;
+  color: #78716c;
   font-size: 14px;
   margin: 0 0 18px;
 }
 
 .btn-create-first {
-  background: #10b981;
+  background: linear-gradient(135deg, #f97316, #ea580c);
   color: #ffffff;
   border: none;
   padding: 10px 22px;

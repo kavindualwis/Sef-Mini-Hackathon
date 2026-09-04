@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { HiX, HiOutlineLocationMarker, HiOutlineBriefcase, HiOutlineCurrencyDollar, HiOutlineFolder, HiOutlineDocumentText, HiOutlineSearch } from 'react-icons/hi';
+import { HiX, HiOutlineLocationMarker, HiOutlineBriefcase, HiOutlineCurrencyDollar, HiOutlineFolder, HiOutlineDocumentText } from 'react-icons/hi';
 import { serviceAPI } from '../services/api';
 import './AddServiceModal.css';
 
@@ -53,25 +53,33 @@ export const AddServiceModal = ({ user, initialData, onClose, onSuccess }: AddSe
   const mapInstanceRef = useRef<any>(null);
   const markerRef = useRef<any>(null);
   const autocompleteInputRef = useRef<HTMLInputElement | null>(null);
+  const debounceTimerRef = useRef<any>(null);
 
-  // Perform geocode search for typed address
-  const handleLocationGeocode = (searchQuery: string) => {
-    if (!window.google || !mapInstanceRef.current || !markerRef.current || !searchQuery.trim()) return;
+  // Perform real-time geocode search as user types
+  const handleRealtimeGeocode = (searchQuery: string) => {
+    setAddress(searchQuery);
 
-    const geocoder = new window.google.maps.Geocoder();
-    geocoder.geocode({ address: searchQuery }, (results: any, status: any) => {
-      if (status === 'OK' && results && results[0]) {
-        const placeLat = results[0].geometry.location.lat();
-        const placeLng = results[0].geometry.location.lng();
-        setLat(placeLat);
-        setLng(placeLng);
-        setAddress(results[0].formatted_address || searchQuery);
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
 
-        mapInstanceRef.current.setCenter({ lat: placeLat, lng: placeLng });
-        mapInstanceRef.current.setZoom(14);
-        markerRef.current.setPosition({ lat: placeLat, lng: placeLng });
-      }
-    });
+    debounceTimerRef.current = setTimeout(() => {
+      if (!window.google || !mapInstanceRef.current || !markerRef.current || !searchQuery.trim()) return;
+
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: searchQuery }, (results: any, status: any) => {
+        if (status === 'OK' && results && results[0]) {
+          const placeLat = results[0].geometry.location.lat();
+          const placeLng = results[0].geometry.location.lng();
+          setLat(placeLat);
+          setLng(placeLng);
+
+          mapInstanceRef.current.setCenter({ lat: placeLat, lng: placeLng });
+          mapInstanceRef.current.setZoom(13);
+          markerRef.current.setPosition({ lat: placeLat, lng: placeLng });
+        }
+      });
+    }, 400);
   };
 
   // Initialize Google Maps
@@ -116,11 +124,13 @@ export const AddServiceModal = ({ user, initialData, onClose, onSuccess }: AddSe
       });
 
       // Autocomplete setup if available
-      if (autocompleteInputRef.current && window.google.maps.places) {
-        const autocomplete = new window.google.maps.places.Autocomplete(autocompleteInputRef.current);
+      if (autocompleteInputRef.current && window.google && window.google.maps && window.google.maps.places) {
+        const autocomplete = new window.google.maps.places.Autocomplete(autocompleteInputRef.current, {
+          fields: ['formatted_address', 'geometry', 'name'],
+        });
         autocomplete.addListener('place_changed', () => {
           const place = autocomplete.getPlace();
-          if (place.geometry && place.geometry.location) {
+          if (place && place.geometry && place.geometry.location) {
             const placeLat = place.geometry.location.lat();
             const placeLng = place.geometry.location.lng();
             setLat(placeLat);
@@ -251,32 +261,17 @@ export const AddServiceModal = ({ user, initialData, onClose, onSuccess }: AddSe
 
           {/* Location setup with Google Maps */}
           <div className="form-field location-section">
-            <label><HiOutlineLocationMarker /> Service Location & Google Map Setup *</label>
-            <p className="field-hint">Type address below and press Search or drag the pin on the map</p>
+            <label><HiOutlineLocationMarker /> Service Location (Real-time Google Map Search) *</label>
+            <p className="field-hint">Type city/address to update map location in real-time or drag pin on map</p>
             
-            <div className="location-search-wrapper">
-              <input
-                ref={autocompleteInputRef}
-                type="text"
-                className="location-search-input"
-                placeholder="Type city or address in Sri Lanka (e.g. Kandy, Galle)..."
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    e.preventDefault();
-                    handleLocationGeocode(address);
-                  }
-                }}
-              />
-              <button
-                type="button"
-                className="btn-search-map"
-                onClick={() => handleLocationGeocode(address)}
-              >
-                <HiOutlineSearch /> Search Map
-              </button>
-            </div>
+            <input
+              ref={autocompleteInputRef}
+              type="text"
+              className="location-search-input"
+              placeholder="Type city or location in Sri Lanka (e.g. Kandy, Galle, Colombo)..."
+              value={address}
+              onChange={(e) => handleRealtimeGeocode(e.target.value)}
+            />
 
             <div className="google-map-container" ref={mapRef}></div>
             <div className="location-coords">
