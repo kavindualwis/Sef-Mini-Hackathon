@@ -12,6 +12,7 @@ import {
 import { serviceAPI } from '../../services/api';
 import { AddServiceModal } from '../../components/AddServiceModal';
 import { Footer } from '../../components/Footer';
+import { handleImageError } from '../../utils/imageFallback';
 import './Seller.css';
 
 export const Seller = () => {
@@ -70,7 +71,7 @@ export const Seller = () => {
       <header className="seller-navbar">
         <div className="nav-left">
           <div className="seller-logo" onClick={() => navigate('/home')}>
-            Fix<span>Mate</span> <span className="seller-tag">SELLER HUB</span>
+            Fix<span>Mate</span>
           </div>
         </div>
 
@@ -135,7 +136,11 @@ export const Seller = () => {
             {myServices.map((service) => (
               <div key={service._id} className="seller-gig-card">
                 <div className="seller-card-image">
-                  <img src={service.coverImage} alt={service.title} />
+                  <img
+                    src={service.coverImage}
+                    alt={service.title}
+                    onError={(e) => handleImageError(e, service.category)}
+                  />
                   <span className="category-pill">{service.category}</span>
                 </div>
 

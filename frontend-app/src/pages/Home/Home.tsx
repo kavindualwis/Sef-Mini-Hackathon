@@ -13,6 +13,7 @@ import {
 import { serviceAPI } from '../../services/api';
 import { AddServiceModal } from '../../components/AddServiceModal';
 import { Footer } from '../../components/Footer';
+import { handleImageError } from '../../utils/imageFallback';
 import './Home.css';
 
 const CATEGORIES = [
@@ -186,7 +187,11 @@ export const Home = () => {
                     onClick={() => navigate(`/service/${gig._id}`)}
                   >
                     <div className="gig-image-wrap">
-                      <img src={gig.coverImage} alt={gig.title} />
+                      <img
+                        src={gig.coverImage}
+                        alt={gig.title}
+                        onError={(e) => handleImageError(e, gig.category)}
+                      />
                       <button className="gig-heart-btn" onClick={(e) => e.stopPropagation()}><HiOutlineHeart /></button>
                     </div>
 

@@ -12,6 +12,7 @@ import {
 } from 'react-icons/hi';
 import { serviceAPI } from '../../services/api';
 import { Footer } from '../../components/Footer';
+import { handleImageError } from '../../utils/imageFallback';
 import './ServiceDetail.css';
 
 declare global {
@@ -143,7 +144,11 @@ export const ServiceDetail = () => {
 
             {/* Large Cover Image */}
             <div className="detail-image-box">
-              <img src={service.coverImage} alt={service.title} />
+              <img
+                src={service.coverImage}
+                alt={service.title}
+                onError={(e) => handleImageError(e, service.category)}
+              />
               <div className="category-overlay-tag">{service.category}</div>
             </div>
 
