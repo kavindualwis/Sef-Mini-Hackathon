@@ -4,6 +4,7 @@ import Landing from './pages/Landing/Landing';
 import Verify from './pages/Verify/Verify';
 import Home from './pages/Home/Home';
 import Seller from './pages/Seller/Seller';
+import ServiceDetail from './pages/ServiceDetail/ServiceDetail';
 
 const App = () => {
   const [authModal, setAuthModal] = useState<'login' | 'register' | null>(null);
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<Landing authModal={authModal} setAuthModal={setAuthModal} />} />
         <Route path="/home" element={<Home />} />
         <Route path="/seller" element={<Seller />} />
+        <Route path="/service/:id" element={<ServiceDetail />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
