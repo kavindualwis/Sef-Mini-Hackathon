@@ -411,3 +411,126 @@
   text-align: center;
   line-height: 1.5;
 }
+
+/* ─── Responsive Media Queries ─── */
+@media (max-width: 960px) {
+  .detail-navbar {
+    padding: 0 20px;
+  }
+  .detail-main-container {
+    padding: 20px;
+  }
+  .detail-split-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .booking-card {
+    position: static;
+  }
+  .detail-image-box {
+    height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .detail-navbar {
+    height: auto;
+    min-height: 56px;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+  .detail-logo {
+    font-size: 20px;
+  }
+  .btn-back-link {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  .switch-mode-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  .detail-main-container {
+    padding: 14px 14px 36px;
+  }
+  .breadcrumb {
+    flex-wrap: wrap;
+    font-size: 12px;
+    margin-bottom: 16px;
+    gap: 4px;
+  }
+  .breadcrumb .current {
+    max-width: 100%;
+    white-space: normal;
+  }
+  .detail-title {
+    font-size: 21px;
+    margin-bottom: 12px;
+  }
+  .detail-provider-header {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .detail-provider-avatar {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  .detail-provider-info h3 {
+    font-size: 15px;
+  }
+  .provider-badges {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .detail-image-box {
+    height: 210px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .category-overlay-tag {
+    top: 10px;
+    left: 10px;
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+  .highlights-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px;
+    margin-bottom: 20px;
+  }
+  .detail-section {
+    padding: 18px 14px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .detail-section h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .description-text p {
+    font-size: 14px;
+  }
+  .detail-google-map {
+    height: 200px;
+  }
+  .map-coords-bar {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 11px;
+  }
+  .booking-card {
+    padding: 18px 14px;
+    border-radius: 10px;
+  }
+  .card-price {
+    font-size: 22px;
+  }
+  .btn-order-now {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+

@@ -220,3 +220,45 @@
   from { opacity: 0; transform: scale(0.97); }
   to { opacity: 1; transform: scale(1); }
 }
+
+/* ─── Responsive Media Queries ─── */
+@media (max-width: 640px) {
+  .add-service-modal-backdrop {
+    padding: 10px;
+  }
+  .add-service-modal-card {
+    padding: 20px 14px;
+    max-height: 94vh;
+    border-radius: 12px;
+  }
+  .modal-close-btn {
+    top: 14px;
+    right: 14px;
+  }
+  .modal-top-header h2 {
+    font-size: 19px;
+  }
+  .form-grid-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .google-map-container {
+    height: 160px;
+  }
+  .location-coords {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+  .btn-cancel,
+  .btn-publish {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+}
+

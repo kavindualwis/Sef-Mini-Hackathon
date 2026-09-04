@@ -105,3 +105,36 @@
 .footer-legal-links a:hover {
   color: #f97316;
 }
+
+/* ─── Responsive Media Queries ─── */
+@media (max-width: 900px) {
+  .footer-top-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-top-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 16px;
+  }
+  .footer-tagline {
+    max-width: 100%;
+  }
+  .footer-bottom-bar {
+    padding: 16px;
+  }
+  .footer-bottom-container {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .footer-legal-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
