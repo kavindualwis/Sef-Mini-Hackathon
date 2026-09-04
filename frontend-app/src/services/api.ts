@@ -42,6 +42,8 @@ export const serviceAPI = {
   getMyServices: (email: string) =>
     api.get('/services/my-services', { params: { email } }),
 
+  getById: (id: string) => api.get(`/services/${id}`),
+
   update: (id: string, data: {
     title: string;
     category: string;
