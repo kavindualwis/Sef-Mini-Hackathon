@@ -5,14 +5,10 @@ import {
   HiOutlineBell,
   HiOutlineMail,
   HiOutlineHeart,
-  HiOutlineDocumentText,
-  HiOutlineUserCircle,
   HiOutlinePlusCircle,
   HiOutlineLocationMarker,
   HiOutlineStar,
-  HiOutlineChevronRight,
   HiOutlineSparkles,
-  HiOutlineBriefcase,
 } from 'react-icons/hi';
 import { serviceAPI } from '../../services/api';
 import { AddServiceModal } from '../../components/AddServiceModal';
@@ -43,7 +39,6 @@ export const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [services, setServices] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
-  const [mode, setMode] = useState<'buying' | 'selling'>('buying');
   const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {

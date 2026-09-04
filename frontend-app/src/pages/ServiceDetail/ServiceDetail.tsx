@@ -9,8 +9,6 @@ import {
   HiOutlineCheck,
   HiOutlineMail,
   HiOutlineShieldCheck,
-  HiOutlineUserCircle,
-  HiOutlinePhone,
 } from 'react-icons/hi';
 import { serviceAPI } from '../../services/api';
 import { Footer } from '../../components/Footer';

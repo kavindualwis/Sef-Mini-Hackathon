@@ -5,11 +5,9 @@ import {
   HiOutlinePencilAlt,
   HiOutlineTrash,
   HiOutlineLocationMarker,
-  HiOutlineStar,
   HiOutlineArrowLeft,
   HiOutlineBriefcase,
   HiOutlineCurrencyDollar,
-  HiOutlineFolder,
 } from 'react-icons/hi';
 import { serviceAPI } from '../../services/api';
 import { AddServiceModal } from '../../components/AddServiceModal';
