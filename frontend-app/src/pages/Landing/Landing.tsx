@@ -277,7 +277,7 @@ const AuthModal = ({ mode, onClose, onSwitch, onVerify, onLoginSuccess }: AuthMo
       onVerify(regData.email, regData.name);
     } catch (err: any) {
       console.error('Registration failed:', err);
-      const msg = err.response?.data?.message || (err.message === 'Network Error' ? 'Cannot connect to server. Ensure backend is running on port 5001' : err.message) || 'Registration failed. Please try again.';
+      const msg = err.response?.data?.message || (err.message === 'Network Error' ? 'Cannot connect to server. Please check backend connection.' : err.message) || 'Registration failed. Please try again.';
       setError(msg);
     } finally {
       setLoading(false);
@@ -303,7 +303,7 @@ const AuthModal = ({ mode, onClose, onSwitch, onVerify, onLoginSuccess }: AuthMo
         onVerify(err.response.data.email, '');
         return;
       }
-      const msg = err.response?.data?.message || (err.message === 'Network Error' ? 'Cannot connect to server. Ensure backend is running on port 5001' : err.message) || 'Login failed. Please try again.';
+      const msg = err.response?.data?.message || (err.message === 'Network Error' ? 'Cannot connect to server. Please check backend connection.' : err.message) || 'Login failed. Please try again.';
       setError(msg);
     } finally {
       setLoading(false);

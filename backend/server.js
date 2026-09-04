@@ -26,11 +26,12 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', service: 'FixMate API' });
 });
 
-// Start server
+// Start server immediately for instant deployment health checks
 const PORT = process.env.PORT || 5001;
 
-connectDB().then(() => {
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`FixMate API running on http://127.0.0.1:${PORT}`);
-  });
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`FixMate API running on port ${PORT}`);
 });
+
+// Connect DB asynchronously
+connectDB();
