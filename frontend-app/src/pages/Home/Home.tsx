@@ -16,6 +16,7 @@ import {
 } from 'react-icons/hi';
 import { serviceAPI } from '../../services/api';
 import { AddServiceModal } from '../../components/AddServiceModal';
+import { Footer } from '../../components/Footer';
 import './Home.css';
 
 const CATEGORIES = [
@@ -184,10 +185,14 @@ export const Home = () => {
                 </div>
               ) : (
                 services.map((gig) => (
-                  <div key={gig._id} className="gig-card">
+                  <div
+                    key={gig._id}
+                    className="gig-card clickable-gig-card"
+                    onClick={() => navigate(`/service/${gig._id}`)}
+                  >
                     <div className="gig-image-wrap">
                       <img src={gig.coverImage} alt={gig.title} />
-                      <button className="gig-heart-btn"><HiOutlineHeart /></button>
+                      <button className="gig-heart-btn" onClick={(e) => e.stopPropagation()}><HiOutlineHeart /></button>
                     </div>
 
                     <div className="gig-card-info">
@@ -226,6 +231,9 @@ export const Home = () => {
           </div>
         </section>
       </main>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Add Service Modal Component */}
       {showAddModal && (
