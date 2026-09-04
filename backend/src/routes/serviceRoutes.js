@@ -4,6 +4,7 @@ const {
   createService,
   getAllServices,
   getMyServices,
+  getServiceById,
   updateService,
   deleteService,
 } = require('../controllers/serviceController');
@@ -11,6 +12,7 @@ const {
 router.post('/', createService);
 router.get('/', getAllServices);
 router.get('/my-services', getMyServices);
+router.get('/:id', getServiceById);
 router.put('/:id', updateService);
 router.delete('/:id', deleteService);
 
