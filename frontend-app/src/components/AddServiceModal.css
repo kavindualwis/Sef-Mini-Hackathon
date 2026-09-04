@@ -89,7 +89,77 @@
   padding: 10px 14px;
   border-radius: 8px;
   font-size: 13px;
+  font-weight: 500;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-error-banner svg {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.field-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.char-counter {
+  font-size: 11px;
+  color: #a8a29e;
+  font-weight: 500;
+}
+
+.char-counter.too-short {
+  color: #ea580c;
+}
+
+.char-counter.near-limit {
+  color: #f59e0b;
+}
+
+.char-counter.at-limit {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.required-star {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+/* Error States */
+.form-field.has-error input,
+.form-field.has-error select,
+.form-field.has-error textarea {
+  border-color: #ef4444 !important;
+  background-color: #fffbfb !important;
+}
+
+.form-field.has-error input:focus,
+.form-field.has-error select:focus,
+.form-field.has-error textarea:focus {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.field-error-msg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #dc2626;
+  margin-top: 2px;
+  animation: fadeIn 0.15s ease-in;
+}
+
+.field-error-msg svg {
+  font-size: 14px;
+  flex-shrink: 0;
 }
 
 .add-service-form {
